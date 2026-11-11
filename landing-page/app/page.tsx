@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { withBasePath } from "@/lib/base-path";
 import { ArrowDown, ArrowUp, ArrowUpRight, Check } from "lucide-react";
 import { ContactLink, WhatsAppIcon } from "@/components/contact-link";
 import { Header } from "@/components/header";
@@ -35,7 +36,7 @@ export default function Home() {
             </div>
             <div className="hero-visual">
               <figure className="hero-image">
-                <Image src="/visual/hero.webp" alt="Casa de máquinas ilustrativa com equipamentos de climatização e dutos metálicos suspensos" fill preload sizes="(max-width: 899px) 94vw, (max-width: 1350px) 52vw, 650px" />
+                <Image src={withBasePath("/visual/hero.webp")} alt="Casa de máquinas ilustrativa com equipamentos de climatização e dutos metálicos suspensos" fill preload sizes="(max-width: 899px) 94vw, (max-width: 1350px) 52vw, 650px" />
               </figure>
               <nav className="hero-shortcuts" aria-label="Áreas de atuação">
                 {services.map(({ id, icon: Icon, shortTitle }) => (
@@ -60,7 +61,7 @@ export default function Home() {
               {services.map(({ id, icon: Icon, title, description, items, action, message, image }) => (
                 <article key={id} id={id} className="service-card">
                   <figure className="service-image">
-                    <Image src={image.src} alt={image.alt} fill sizes="(max-width: 699px) 94vw, (max-width: 1350px) 46vw, 620px" />
+                    <Image src={withBasePath(image.src)} alt={image.alt} fill sizes="(max-width: 699px) 94vw, (max-width: 1350px) 46vw, 620px" />
                   </figure>
                   <div className="service-body">
                     <span className="icon-tile"><Icon size={23} strokeWidth={1.7} aria-hidden="true" /></span>
@@ -80,7 +81,7 @@ export default function Home() {
         <section id="sobre" className="section shell about" aria-labelledby="sobre-titulo">
           <figure className="about-figure">
             <div className="about-photo">
-              <Image src="/visual/equipe.webp" alt="Ilustração de técnicos inspecionando a montagem de um duto metálico" fill sizes="(max-width: 819px) 94vw, 47vw" />
+              <Image src={withBasePath("/visual/equipe.webp")} alt="Ilustração de técnicos inspecionando a montagem de um duto metálico" fill sizes="(max-width: 819px) 94vw, 47vw" />
             </div>
           </figure>
           <div className="about-copy">
@@ -116,7 +117,7 @@ export default function Home() {
               {projects.map(({ image, category, title, alt }) => (
                 <figure key={image} className="project">
                   <div className="project-image">
-                    <Image src={`/visual/${image}.webp`} alt={alt} fill sizes="(max-width: 639px) 94vw, (max-width: 1023px) 46vw, 56vw" />
+                    <Image src={withBasePath(`/visual/${image}.webp`)} alt={alt} fill sizes="(max-width: 639px) 94vw, (max-width: 1023px) 46vw, 56vw" />
                   </div>
                   <figcaption><p>{category}</p><h3>{title}</h3></figcaption>
                 </figure>
@@ -175,7 +176,7 @@ export default function Home() {
         <div className="shell">
           <div className="footer-grid">
             <div>
-              <a href="#inicio" aria-label="MACC — início"><Image src="/visual/logo.webp" alt="" width={114} height={57} /></a>
+              <a href="#inicio" aria-label="MACC — início"><Image src={withBasePath("/visual/logo.webp")} alt="" width={114} height={57} /></a>
               <p>Montagem de ar-condicionado central e fabricação metálica para comércio e indústria.</p>
             </div>
             <nav aria-label="Links rápidos">

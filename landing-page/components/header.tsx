@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { withBasePath } from "@/lib/base-path";
 import { Menu, X } from "lucide-react";
 import { useRef, useState } from "react";
 import { navigation } from "@/lib/content";
@@ -20,7 +21,7 @@ export function Header({ contact }: { contact: string | null }) {
       <div className="shell header-inner">
         <a className="brand" href="#inicio" aria-label="MACC — início" onClick={() => setOpen(false)}>
           <Image
-            src="/visual/logo.webp"
+            src={withBasePath("/visual/logo.webp")}
             alt=""
             width={320}
             height={160}

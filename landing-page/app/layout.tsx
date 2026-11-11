@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { businessName, description, siteUrl } from "@/lib/site";
+import { withBasePath } from "@/lib/base-path";
 import "./globals.css";
 
 const display = localFont({ src: "./fonts/barlow-condensed.woff2", weight: "600", variable: "--font-display", display: "swap" });
@@ -14,12 +15,12 @@ export const metadata: Metadata = {
   alternates: siteUrl ? { canonical: siteUrl.href } : undefined,
   openGraph: {
     title, description, type: "website", locale: "pt_BR", siteName: "MACC",
-    ...(siteUrl && { url: siteUrl.href, images: [{ url: "/visual/macc-social.jpg", width: 1200, height: 630, alt: businessName }] }),
+    ...(siteUrl && { url: siteUrl.href, images: [{ url: withBasePath("/visual/macc-social.jpg"), width: 1200, height: 630, alt: businessName }] }),
   },
   twitter: {
     card: siteUrl ? "summary_large_image" : "summary",
     title, description,
-    ...(siteUrl && { images: ["/visual/macc-social.jpg"] }),
+    ...(siteUrl && { images: [withBasePath("/visual/macc-social.jpg")] }),
   },
   robots: { index: Boolean(siteUrl), follow: Boolean(siteUrl) },
 };
